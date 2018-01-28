@@ -12,17 +12,15 @@ public class Demo {
 	private static final Path FILE = Paths.get("output.txt");
 	private static final String STOP_WORD = "quit";
 
-	private static StringBuilder sb = new StringBuilder();
-
-	private static volatile String input;
+	private static volatile StringBuilder sb = new StringBuilder();
 	private static String prevInput;
 
 	public static void writeValue() {
-		if (input != null && !input.equals(prevInput)) {
+		String curValue = sb.toString();
+		if (!curValue.equals(prevInput)) {
 			try {
-				sb.append(input).append(System.getProperty("line.separator"));
-				Files.write(FILE, sb.toString().getBytes(), prevInput != null ? StandardOpenOption.CREATE : StandardOpenOption.TRUNCATE_EXISTING);
-				prevInput = input;
+				Files.write(FILE, curValue.getBytes(), prevInput != null ? StandardOpenOption.CREATE : StandardOpenOption.TRUNCATE_EXISTING);
+				prevInput = curValue;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -34,12 +32,13 @@ public class Demo {
 		ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
 		exec.scheduleAtFixedRate(Demo::writeValue, 1, 1, TimeUnit.SECONDS);
 
+		String input;
 		do {
 			System.out.print("Please enter line: ");
 			input = sc.nextLine();
+			sb.append(input).append(System.lineSeparator());
 		} while (!STOP_WORD.equals(input));
 
-		Thread.sleep(1000);
 		exec.shutdown();
 		exec.awaitTermination(1, TimeUnit.SECONDS);
 	}
