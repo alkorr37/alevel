@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+            integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+            integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<div class="main">
+    <div class="main-nav">
+        <p class="section-title">List of tables</p>
+        <ul>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="actions">
+            <a href="#" title="Add Row" class="lnk-btn disabled"><span>Add Row</span><i class="fas fa-plus"></i></a>
+            <a href="#" title="Add Col" class="lnk-btn disabled"><span>Add Col</span><i class="fas fa-plus"></i></a>
+            <a href="#" title="Add Table" class="lnk-btn"><span>Add Table</span><i class="fas fa-plus"></i></a>
+            <a href="#" title="Remove Table" class="lnk-btn remove-btn disabled">
+                <span>Remove Table</span><i class="fas fa-plus"></i>
+            </a>
+        </div>
+        <div class="table-wrapp"></div>
+    </div>
+</div>
+
+<div class="add-table-popup" style="display: none">
+    <div class="add-table-form">
+        <div class="row">
+            <label for="tableName">Table Name</label>
+            <input type="text" id="tableName"/>
+        </div>
+        <div class="row">
+            <label for="rowsNumb">Rows</label>
+            <input type="text" id="rowsNumb"/>
+        </div>
+        <div class="row">
+            <label for="collsNumb">Cols</label>
+            <input type="text" id="collsNumb"/>
+        </div>
+        <div class="row actions">
+            <a href="#" title="Cancel" class="lnk-btn"><span>Cancel</span></a>
+            <input type="submit" value="Save Table" class="lnk-btn">
+        </div>
+    </div>
+</div>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
