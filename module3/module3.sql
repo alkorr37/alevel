@@ -1,7 +1,7 @@
 ﻿--
 -- Скрипт сгенерирован Devart dbForge Studio for MySQL, Версия 7.3.137.0
 -- Домашняя страница продукта: http://www.devart.com/ru/dbforge/mysql/studio
--- Дата скрипта: 18.03.2018 23:28:34
+-- Дата скрипта: 18.03.2018 23:44:27
 -- Версия сервера: 5.7.19
 -- Версия клиента: 4.1
 --
@@ -54,11 +54,11 @@ CREATE TABLE data (
   PRIMARY KEY (id),
   UNIQUE INDEX id (id),
   CONSTRAINT FK_data_table_id FOREIGN KEY (table_id)
-  REFERENCES tables (id) ON DELETE NO ACTION ON UPDATE RESTRICT
+  REFERENCES tables (id) ON DELETE CASCADE ON UPDATE RESTRICT
 )
 ENGINE = INNODB
-AUTO_INCREMENT = 48
-AVG_ROW_LENGTH = 4096
+AUTO_INCREMENT = 80
+AVG_ROW_LENGTH = 16384
 CHARACTER SET utf8
 COLLATE utf8_general_ci
 ROW_FORMAT = DYNAMIC;
@@ -74,7 +74,7 @@ CREATE TABLE tables (
   PRIMARY KEY (id)
 )
 ENGINE = INNODB
-AUTO_INCREMENT = 25
+AUTO_INCREMENT = 26
 AVG_ROW_LENGTH = 16384
 CHARACTER SET utf8
 COLLATE utf8_general_ci
@@ -84,16 +84,13 @@ ROW_FORMAT = DYNAMIC;
 -- Вывод данных для таблицы data
 --
 INSERT INTO data VALUES
-(44, 0, 0, '211', 1),
-(45, 0, 1, '222', 1),
-(46, 0, 2, 'f', 1),
-(47, 0, 3, NULL, 1);
+(54, 0, 0, '211', 1);
 
 -- 
 -- Вывод данных для таблицы tables
 --
 INSERT INTO tables VALUES
-(1, 'table1', 4, 1);
+(1, 'table1', 1, 1);
 -- 
 -- Восстановить предыдущий режим SQL (SQL mode)
 -- 
